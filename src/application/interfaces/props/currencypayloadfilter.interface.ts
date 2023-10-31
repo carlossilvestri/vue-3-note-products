@@ -1,0 +1,1 @@
+export interface CurrencyPayloadFilter {  changeValue: number, usdValue: number}

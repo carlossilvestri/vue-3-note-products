@@ -1,16 +1,14 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
 import { RouterView } from 'vue-router'
-import { type Customer, customerService, type CustomerCurrency } from './authentication/interfaces'
+import { type Customer, customerService } from './authentication/interfaces'
 import { useCustomerStore } from '@/general/stores/customer'
 
 const customerStore = useCustomerStore()
 
 onMounted(async () => {
   const user: Customer = await customerService.getAuthenticated()
-  let customerCurrency: CustomerCurrency = customerStore.$state
-  customerCurrency = { ...customerCurrency, ...user }
-  customerStore.save(customerCurrency)
+  customerStore.save(user)
 })
 </script>
 
